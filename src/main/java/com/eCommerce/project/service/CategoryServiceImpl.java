@@ -11,7 +11,7 @@ import java.util.List;
 public class CategoryServiceImpl implements CategoryService{
 
 
-
+    private long nextID=1;
     private List<Category> categories = new ArrayList<>();
 
     @Override
@@ -21,7 +21,22 @@ public class CategoryServiceImpl implements CategoryService{
 
     @Override
     public void createCategory(Category category) {
+        category.setCategoryID(nextID);
+        nextID++;
         categories.add(category);
 
+    }
+
+    @Override
+    public String deleteCategory(long categoryID) {
+        Category category = categories.stream()
+                .filter(c -> c.getCategoryID()==(categoryID))
+                .findFirst().orElse(null);
+        if(category == null)
+        {
+            return "Category Not Found";
+        }
+        categories.remove(category);
+        return "Category with categoryID: " + categoryID + " Deleted Successfully!!";
     }
 }
