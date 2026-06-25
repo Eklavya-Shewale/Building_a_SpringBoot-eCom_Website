@@ -15,7 +15,7 @@ import java.util.Optional;
 public class CategoryServiceImpl implements CategoryService{
 
 
-    private long nextID=1;
+    private Long nextID=1L;
     private List<Category> categories = new ArrayList<>();
 
     @Override
@@ -32,7 +32,7 @@ public class CategoryServiceImpl implements CategoryService{
     }
 
     @Override
-    public String deleteCategory(long categoryID) {
+    public String deleteCategory(Long categoryID) {
         Category category = categories.stream()
                 .filter(c -> c.getCategoryID()==(categoryID))
                 .findFirst()
@@ -43,7 +43,7 @@ public class CategoryServiceImpl implements CategoryService{
     }
 
     @Override
-    public Category updateCategory(Category category, long categoryID) {
+    public Category updateCategory(Category category, Long categoryID) {
         Optional<Category> optionalCategory = categories.stream()
                 .filter(c -> c.getCategoryID()==(categoryID))
                 .findFirst();

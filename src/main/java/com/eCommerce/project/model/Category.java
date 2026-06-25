@@ -1,20 +1,32 @@
 package com.eCommerce.project.model;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jdk.jfr.Enabled;
+
+@Entity(name = "Categories")
 public class Category
 {
-    private long categoryID;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long categoryID;
     private String categoryName;
 
-    public Category(long categoryID, String categoryName) {
+    public Category(Long categoryID, String categoryName) {
         this.categoryID = categoryID;
         this.categoryName = categoryName;
     }
 
-    public long getCategoryID() {
+    public Category() {
+    }
+
+    public Long getCategoryID() {
         return categoryID;
     }
 
-    public void setCategoryID(long categoryID) {
+    public void setCategoryID(Long categoryID) {
         this.categoryID = categoryID;
     }
 

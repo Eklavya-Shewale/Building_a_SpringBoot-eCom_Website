@@ -32,7 +32,7 @@ public class CategoryController
 
 
    @DeleteMapping("/api/admin/categories/{categoryID}")
-   public ResponseEntity<String> deleteCategory(@PathVariable long categoryID){
+   public ResponseEntity<String> deleteCategory(@PathVariable Long categoryID){
       try{
          String status = CategoryService.deleteCategory(categoryID);
          return new ResponseEntity<>(status, HttpStatus.OK);
@@ -44,7 +44,7 @@ public class CategoryController
 
    @PutMapping("/api/public/categories/{categoryID}")
    public ResponseEntity<String> updateCategory(@RequestBody Category category,
-                                                @PathVariable long categoryID){
+                                                @PathVariable Long categoryID){
       try{
          Category savedCategory = CategoryService.updateCategory(category,categoryID);
          return new ResponseEntity<>("Category with category ID: "+categoryID+ "Has been updated", HttpStatus.OK);
